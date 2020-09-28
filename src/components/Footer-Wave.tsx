@@ -6,6 +6,8 @@ export const FooterWave = () => (
     data-name="bottom-wave"
     preserveAspectRatio="none"
     viewBox="0 0 1200 120"
+    height="40px"
+    width="100vw"
     style={{ position: "relative", top: "1px" }}
   >
     <path
