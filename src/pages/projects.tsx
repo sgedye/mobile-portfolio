@@ -10,8 +10,8 @@ export const Projects = () => (
       <title>projects</title>
     </Helmet>
     <main className="container pt-3">
-      {projectData.map(({ title, url, img, blurb }) => (
-        <Project title={title} url={url} img={img} blurb={blurb} />
+      {projectData.map(({ title, url, img, blurb }, idx) => (
+        <Project key={idx} title={title} url={url} img={img} blurb={blurb} />
       ))}
     </main>
   </>
