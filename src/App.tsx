@@ -9,7 +9,7 @@ import { About } from "./pages/about";
 import { Projects } from "./pages/projects";
 import { Contact } from "./pages/contact";
 
-import "./assets/scss/page-layout.scss";
+import "./assets/scss/layout.scss";
 
 function App() {
   return (
@@ -18,18 +18,10 @@ function App() {
       <BrowserRouter>
         <Header />
         <Switch>
-          <Route path="/" exact>
-            <Home />
-          </Route>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/projects">
-            <Projects />
-          </Route>
-          <Route path="/contact">
-            <Contact />
-          </Route>
+          <Route path="/" exact component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/projects" component={Projects} />
+          <Route path="/contact" component={Contact} />
         </Switch>
         <Footer />
       </BrowserRouter>

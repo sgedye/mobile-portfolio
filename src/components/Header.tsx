@@ -3,14 +3,12 @@ import { useLocation } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 
-// import "../assets/scss/header.scss";
-
 export const Header = () => {
   const { pathname } = useLocation();
   const title = pathname.substring(1) || "Home";
   return (
-    <header className="container-fluid bg-primary sticky-top py-2 header">
-      <Navbar bg="" expand="lg" sticky="top">
+    <header className="bg-primary sticky-top header">
+      <Navbar bg="" expand="lg">
         <Navbar.Brand href="/">
           <img src="/content/gfx/sg-logo.png" alt="SG Logo" className="img-fluid w-20" />
         </Navbar.Brand>

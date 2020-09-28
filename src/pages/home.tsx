@@ -6,7 +6,7 @@ export const Home = () => (
     <Helmet>
       <title>home</title>
     </Helmet>
-    <main className="container py-3">
+    <main className="container pt-3">
       <h1>Home</h1>
       <p>This is home!</p>
       This is the main content...
