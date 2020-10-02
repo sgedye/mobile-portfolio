@@ -5,8 +5,6 @@ import { Nav, Navbar } from "react-bootstrap";
 export const Header = () => {
   const { pathname } = useLocation();
   const title = pathname.substring(1) || "Home";
-  // const [isNavCollapsed, setIsNavCollapsed] = React.useState(true);
-  // const toggleNav = () => setIsNavCollapsed(!isNavCollapsed);
 
   return (
     <header className="sticky-top header">
@@ -23,26 +21,28 @@ export const Header = () => {
         <Navbar.Text className="h3 justify-content-center text-uppercase text-dark m-0">
           {title}
         </Navbar.Text>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle className="toggler" aria-controls="basic-navbar-nav">
+          <div className="toggler__line" />
+        </Navbar.Toggle>
 
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mx-auto">
-            <Navbar.Toggle className=" border-0">
+            <Navbar.Toggle className="border-0">
               <Link className="nav-link text-white" to="/">
                 Home
               </Link>
             </Navbar.Toggle>
-            <Navbar.Toggle className=" border-0">
+            <Navbar.Toggle className="border-0">
               <Link className="nav-link text-white" to="/about">
                 About
               </Link>
             </Navbar.Toggle>
-            <Navbar.Toggle className=" border-0">
+            <Navbar.Toggle className="border-0">
               <Link className="nav-link text-white" to="/projects">
                 Projects
               </Link>
             </Navbar.Toggle>
-            <Navbar.Toggle className=" border-0">
+            <Navbar.Toggle className="border-0">
               <Link className="nav-link text-white" to="/contact">
                 Contact
               </Link>
