@@ -10,6 +10,7 @@ import { Projects } from "./pages/projects";
 import { Contact } from "./pages/contact";
 
 import "./assets/scss/layout.scss";
+import "./assets/scss/radio-toggler.scss";
 
 function App() {
   return (
