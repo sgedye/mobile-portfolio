@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Helmet } from "react-helmet";
-import { ToggleToken, RadioButtons } from "../components/Form";
+// import { ToggleToken, RadioButtons } from "../components/Form";
 import { useForm } from "react-yup";
 
 const options = [
@@ -29,7 +29,7 @@ export const Home = () => {
         <br />
         This is the main content...
         <br />
-        <ToggleToken
+        {/* <ToggleToken
           id="memberType"
           title="Member Type"
           value={getValue("memberType") as number}
@@ -42,7 +42,7 @@ export const Home = () => {
           value={getValue("gender") as number}
           options={options2}
           {...field}
-        />
+        /> */}
 
         <pre>{JSON.stringify(values, null, 2)}</pre>
       </main>
