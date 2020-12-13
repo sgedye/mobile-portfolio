@@ -43,6 +43,11 @@ export const Header = () => {
               </Link>
             </Navbar.Toggle>
             <Navbar.Toggle className="border-0">
+              <Link className="nav-link text-white" to="/join">
+                Join
+              </Link>
+            </Navbar.Toggle>
+            <Navbar.Toggle className="border-0">
               <Link className="nav-link text-white" to="/contact">
                 Contact
               </Link>
