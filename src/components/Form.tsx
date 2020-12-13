@@ -2,7 +2,9 @@ import React from "react";
 import classNames from "classnames";
 import { FaCircle, FaCheckCircle } from "react-icons/fa";
 
-// import { ValidationMessage } from "./ValidationMessage";
+export const ValidationMessage: React.FC<{}> = ({ children }) => (
+  <div className="invalid-feedback d-block text-left mb-2">{children}</div>
+);
 
 type LabelProps = React.DetailedHTMLProps<
   React.LabelHTMLAttributes<HTMLLabelElement>,
@@ -24,6 +26,7 @@ type ReactHtmlInputProps = React.DetailedHTMLProps<
   HTMLInputElement
 >;
 
+// BASIC TEXT FIELD
 interface FieldProps
   extends BaseFieldProps,
     Omit<ReactHtmlInputProps, "id" | "name"> {}
@@ -50,8 +53,7 @@ export const Field: React.FC<FieldProps> = ({
         name={name}
         {...rest}
       />
-      {error && touched && <p>{error}</p>}
-      {/* <ValidationMessage>{error}</ValidationMessage>} */}
+      {error && touched && <ValidationMessage>{error}</ValidationMessage>}
     </div>
   );
 };
@@ -61,7 +63,7 @@ type Option = {
   text: string;
 };
 
-// RADIO
+// RADIO GENERIC
 interface RadioProps
   extends Omit<ReactHtmlInputProps, "id" | "name" | "value">,
     BaseFieldProps {
@@ -139,28 +141,36 @@ export const ToggleToken: React.FC<RadioButtonsProps> = ({
   onBlur,
   options,
   value,
-  labelProps = {}
+  touched,
+  error,
+  labelProps = {},
+  ...rest
 }) => (
-  <fieldset className="form-check toggle-token">
+  <fieldset className="form-check toggle-token mb-3">
     <label className="d-block" {...labelProps}>
       {title}
     </label>
     {options.map((option, idx) => (
       <div key={idx} className={classNames("form-check-inline", className)}>
         <input
-          className="form-check-input form-control"
+          className={classNames("form-check-input form-control", {
+            "is-invalid": error && touched
+          })}
           type="radio"
           id={`${id}-${idx}`}
           name={id}
-          value={(option.value as string) || "0"}
-          checked={option.value == value}
+          value={option.value as string}
+          checked={option.value === value}
           disabled={disabled}
           onChange={onChange}
           onBlur={onBlur}
+          {...rest}
         />
         <label
           {...labelProps}
-          className={classNames("form-check-label", labelProps.className)}
+          className={classNames("form-check-label", labelProps.className, {
+            "border-danger": touched && error
+          })}
           htmlFor={`${id}-${idx}`}
         >
           <FaCircle className="fas" />
@@ -169,62 +179,94 @@ export const ToggleToken: React.FC<RadioButtonsProps> = ({
         </label>
       </div>
     ))}
+    {touched && error && <ValidationMessage>{error}</ValidationMessage>}
   </fieldset>
 );
 
-interface DateInputProps extends Omit<FieldProps, "placeholder"> {
-  placeholder?: string[];
-}
+/*/////////////////////////////////////////////////
+// DATE TIME -- ATTEMPT -- Use DateComponent below
+//
+// interface DateInputProps extends Omit<FieldProps, "placeholder"> {
+//   placeholder?: string[];
+// }
+//
+// export const DateInput: React.FC<DateInputProps> = ({
+//   id,
+//   name,
+//   label,
+//   labelProps,
+//   placeholder,
+//   ...rest
+// }) => {
+//   return (
+//     <div className="d-block">
+//       <label htmlFor={id} {...labelProps}>
+//         {label}
+//       </label>
+//       <div className="d-flex">
+//         <div className="form-group px-2" style={{ width: "4rem" }}>
+//           <label className="small text-muted mb-0 ml-1">Day</label>
+//           <input
+//             type="text"
+//             id={`${name}.day`}
+//             name={`${name}.day`}
+//             placeholder="21"
+//             className="form-control text-center"
+//             {...rest}
+//           />
+//         </div>
+//         <div className="form-group px-2" style={{ width: "4rem" }}>
+//           <label className="small text-muted mb-0 ml-1">Month</label>
+//           <input
+//             type="text"
+//             id={`${name}.month`}
+//             name={`${name}.month`}
+//             placeholder="03"
+//             className="form-control text-center"
+//             {...rest}
+//           />
+//         </div>
+//         <div className="form-group px-2" style={{ width: "5.5rem" }}>
+//           <label className="small text-muted mb-0 ml-1">Year</label>
+//           <input
+//             type="text"
+//             id={`${name}.year`}
+//             name={`${name}.year`}
+//             placeholder="1988"
+//             className="form-control text-center"
+//             {...rest}
+//           />
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+*/
 
-export const DateInput: React.FC<DateInputProps> = ({
+export const DateComponent: React.FC<FieldProps> = ({
   id,
   name,
   label,
   labelProps,
   placeholder,
+  touched,
+  error,
   ...rest
 }) => {
+  const width = label === "Year" ? "5rem" : "4rem";
   return (
-    <div className="d-block">
-      <label htmlFor={id} {...labelProps}>
-        {label}
-      </label>
-      <div className="d-flex">
-        <div className="form-group px-2" style={{ width: "4rem" }}>
-          <label className="small text-muted mb-0 ml-1">Day</label>
-          <input
-            type="text"
-            name=""
-            id=""
-            placeholder="21"
-            className="form-control text-center"
-            {...rest}
-          />
-        </div>
-        <div className="form-group px-2" style={{ width: "4rem" }}>
-          <label className="small text-muted mb-0 ml-1">Month</label>
-          <input
-            type="text"
-            name=""
-            id=""
-            placeholder="03"
-            className="form-control text-center"
-            {...rest}
-          />
-        </div>
-        <div className="form-group px-2" style={{ width: "5.5rem" }}>
-          <label className="small text-muted mb-0 ml-1">Year</label>
-          <input
-            type="text"
-            name=""
-            id=""
-            placeholder="1988"
-            className="form-control text-center"
-            {...rest}
-          />
-        </div>
-      </div>
+    <div className="px-2" style={{ width }}>
+      <label className="small text-muted mb-0 ml-1">{label}</label>
+      <input
+        type="text"
+        id={id}
+        name={name}
+        placeholder={placeholder}
+        className={classNames("form-control text-center", {
+          "border-danger": touched && error
+        })}
+        {...rest}
+      />
     </div>
   );
-  // [03,02,2001]
 };
