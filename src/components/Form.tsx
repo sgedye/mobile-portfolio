@@ -41,65 +41,7 @@ interface RadioProps
 
 type RadioButtonsProps = Omit<RadioProps, "name" | "label">;
 
-// export const RadioButtons: React.FC<RadioButtonsProps> = ({
-//   id,
-//   className,
-//   disabled,
-//   onChange,
-//   onBlur,
-//   options,
-//   title,
-//   error,
-//   touched,
-//   labelProps = {},
-//   value,
-//   isChecked
-// }) => {
-//   return (
-//     <fieldset className="form-group radio-group">
-//       <legend>{title}</legend>
-//       {options.map((option, choiceNumber) => (
-//         <div
-//           key={choiceNumber}
-//           className={classNames(
-//             "custom-control",
-//             "custom-radio",
-//             "custom-control-inline",
-//             {
-//               "is-invalid": touched && error
-//             },
-//             className
-//           )}
-//         >
-//           <input
-//             className={classNames("custom-control-input", {
-//               "is-invalid": touched && error
-//             })}
-//             type="radio"
-//             id={`${id}-${choiceNumber}`}
-//             name={id}
-//             value={option.value as string}
-//             disabled={disabled}
-//             checked={isChecked ? isChecked(option) : option.value === value}
-//             onChange={onChange}
-//             onBlur={onBlur}
-//           />
-//           <label
-//             {...labelProps}
-//             className={classNames("custom-control-label", labelProps.className)}
-//             htmlFor={`${id}-${choiceNumber}`}
-//           >
-//             {option.text}
-//           </label>
-//         </div>
-//       ))}
-//       {/* {touched && error && <ValidationMessage>{error}</ValidationMessage>} */}
-//     </fieldset>
-//   );
-// };
-
-
-export const ToggleToken: React.FC<RadioButtonsProps> = ({
+export const RadioButtons: React.FC<RadioButtonsProps> = ({
   id,
   className,
   disabled,
@@ -107,35 +49,91 @@ export const ToggleToken: React.FC<RadioButtonsProps> = ({
   onBlur,
   options,
   title,
+  error,
+  touched,
   labelProps = {},
+  value,
+  isChecked
 }) => {
   return (
     <fieldset className="form-group radio-group">
       <legend>{title}</legend>
-      {options.map((option, idx) => (
-        <div key={idx} className={classNames("form-check-inline", className)}>
+      {options.map((option, choiceNumber) => (
+        <div
+          key={choiceNumber}
+          className={classNames(
+            "custom-control",
+            "custom-radio",
+            "custom-control-inline",
+            {
+              "is-invalid": touched && error
+            },
+            className
+          )}
+        >
           <input
-            className="form-check-input"
+            className={classNames("custom-control-input", {
+              "is-invalid": touched && error
+            })}
             type="radio"
-            id={`${id}-${idx}`}
+            id={`${id}-${choiceNumber}`}
             name={id}
-            value={(option.value as string) || ""}
-            checked={option.value === idx}
+            value={option.value as string}
             disabled={disabled}
+            checked={isChecked ? isChecked(option) : option.value == value}
             onChange={onChange}
             onBlur={onBlur}
           />
           <label
             {...labelProps}
-            className={classNames("form-check-label", labelProps.className)}
-            htmlFor={`${id}-${idx}`}
+            className={classNames("custom-control-label", labelProps.className)}
+            htmlFor={`${id}-${choiceNumber}`}
           >
-            <FaCircle className="fas" />
-            <FaCheckCircle className="fas" />
             {option.text}
           </label>
         </div>
       ))}
+      {/* {touched && error && <ValidationMessage>{error}</ValidationMessage>} */}
     </fieldset>
   );
 };
+
+export const ToggleToken: React.FC<RadioButtonsProps> = ({
+  id,
+  title,
+  className,
+  disabled,
+  onChange,
+  onBlur,
+  options,
+  value,
+  labelProps = {}
+}) => (
+  <fieldset className="form-check toggle-token">
+    <legend>{title}</legend>
+    {options.map((option, idx) => (
+      <div key={idx} className={classNames("form-check-inline", className)}>
+        <input
+          className="form-check-input"
+          type="radio"
+          id={`${id}-${idx}`}
+          name={id}
+          value={(option.value as string) || "0"}
+          checked={option.value == value}
+          disabled={disabled}
+          onChange={onChange}
+          onBlur={onBlur}
+        />
+        <label
+          {...labelProps}
+          className={classNames("form-check-label", labelProps.className)}
+          htmlFor={`${id}-${idx}`}
+        >
+          <FaCircle className="fas" />
+          <FaCheckCircle className="fas" />
+          {option.text}
+        </label>
+      </div>
+    ))}
+  </fieldset>
+);
