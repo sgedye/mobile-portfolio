@@ -46,6 +46,8 @@ export const Join = () => {
 
   console.log(CURRENT_YEAR);
 
+  const [formIsSubmitted, setFormIsSubmitted] = React.useState(false);
+
   const handleSubmit = React.useMemo(() => {
     return createSubmitHandler((v) => {
       console.log("submitting......");
@@ -62,6 +64,7 @@ export const Join = () => {
           console.log(res);
         })
         .finally(() => {
+          setFormIsSubmitted(true);
           setTimeout(() => {
             window.scrollTo({
               top: 0,
@@ -73,6 +76,42 @@ export const Join = () => {
     });
   }, [createSubmitHandler, setSubmitting, values]);
 
+  if (formIsSubmitted) {
+    const day = (getValue("dateOfBirth.day") as string).padStart(2,'0') || "";
+    const month = (getValue("dateOfBirth.month") as string).padStart(2,'0') || "";
+    const year = (getValue("dateOfBirth.year") as string) || "";
+
+    return (
+      <>
+        <Helmet>
+          <title>Join</title>
+        </Helmet>
+        <main className="container pt-3">
+          <h1 className="h3 text-center mb-3">Form Submitted</h1>
+          <ul className="text-center list-unstyled">
+            <li className="py-3">
+              <strong>First Name:</strong>{" "}<span>{values.firstName}</span>
+            </li>
+            <li className="py-3">
+              <strong>Last Name:</strong>{" "}<span>{values.lastName}</span>
+            </li>
+            <li className="py-3">
+              <strong>Email:</strong>{" "}<span>{values.email}</span>
+            </li>
+            <li className="py-3">
+              <strong>Date of Birth:</strong>{" "}
+              <span>{`${day}/${month}/${year}`}</span>
+            </li>
+            <li className="py-3">
+              <strong>Gender:</strong>{" "}<span>
+                {genderOptions.find((n) => n.value === values.gender)?.text}
+              </span>
+            </li>
+          </ul>
+        </main>
+      </>
+    );
+  }
   return (
     <>
       <Helmet>
