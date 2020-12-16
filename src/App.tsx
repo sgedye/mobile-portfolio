@@ -7,8 +7,7 @@ import { Footer } from "./components/Footer";
 
 import { Home, About, Projects, Contact, Join } from "./pages";
 
-import "./assets/scss/layout.scss";
-import "./assets/scss/radio-toggler.scss";
+import "./assets/scss/main.scss";
 
 function App() {
   return (

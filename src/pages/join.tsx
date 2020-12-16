@@ -221,6 +221,10 @@ export const Join = () => {
             >
               {isSubmitting ? "Submitting..." : "Submit"}
             </button>
+            <button className="btn btn-outline">asdfk</button>
+            <button className="btn btn-sm">asjsdh</button>
+            <button className="btn btn-lg btn-outline">asdfh</button>
+            <button className="btn btn-block">ajsdh</button>
           </div>
         </form>
 
