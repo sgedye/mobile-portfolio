@@ -3,24 +3,27 @@
   display: block;
   padding-left: 1.25rem;
 }
-.form-check-input {
-  position: absolute;
-  margin-top: 0.3rem;
-  margin-left: -1.25rem;
-}
-.form-check-input[disabled] ~ .form-check-label,
-.form-check-input:disabled ~ .form-check-label {
+// .form-check-input {
+//   position: absolute;
+//   margin-top: 0.3rem;
+//   margin-left: -1.25rem;
+// }
+
+.form-check-input[disabled] ~ .form-check-label.form-check-label.form-check-label,
+.form-check-input:disabled ~ .form-check-label.form-check-label.form-check-label {
   color: #6c757d;
+  cursor: not-allowed;
 }
-.form-check-label {
-  margin-bottom: 0;
-}
-.form-check-inline .form-check-input {
-  position: static;
-  margin-top: 0;
-  margin-right: 0.3125rem;
-  margin-left: 0;
-}
+
+// .form-check-label {
+//   margin-bottom: 0;
+// }
+// .form-check-inline .form-check-input {
+//   position: static;
+//   margin-top: 0;
+//   margin-right: 0.3125rem;
+//   margin-left: 0;
+// }
 
 // .was-validated .form-check-input:valid ~ .form-check-label,
 // .form-check-input.is-valid ~ .form-check-label {
@@ -45,11 +48,8 @@
 // }
 
 .form-inline .form-check {
-  display: -webkit-box;
   display: flex;
-  -webkit-box-align: center;
   align-items: center;
-  -webkit-box-pack: center;
   justify-content: center;
   width: auto;
   padding-left: 0;
@@ -57,35 +57,33 @@
 .form-inline .form-check-input {
   position: relative;
   flex-shrink: 0;
-  margin-top: 0;
-  margin-right: 0.25rem;
-  margin-left: 0;
+  margin: 0 0.25rem auto 0;
 }
 .toggle-token.form-check .form-check-input {
   position: absolute;
-  width: 1px;
-  height: 1px;
+  width: 0;
+  height: 0;
   padding: 0;
-  margin: -1px;
+  margin: 0;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
-  border: 0;
+  // border: 0;
 }
 .toggle-token.form-check {
   display: inline-block;
   padding: 0;
-  margin: 0 0 4px 0 !important;
+  margin: 0 0 0.25rem 0;
 }
 .toggle-token.form-check .form-check-label {
   background-color: #f5f6f7;
-  padding: 4px 16px 4px 32px;
+  padding: 0.25rem 1rem 0.25rem 2rem;
   border: 2px solid #cfd9e6;
-  border-radius: 16px;
+  border-radius: 1rem;
   position: relative;
-  -webkit-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
+  transition: all 200ms ease-in-out;
 }
+
 .toggle-token.form-check .form-check-label .fas {
   position: absolute;
   top: 8px;
@@ -113,10 +111,7 @@
   left: 10px;
   color: #fff;
 }
-.toggle-token.form-check
-  .form-check-input:checked
-  + .form-check-label
-  .fas:first-of-type {
+.toggle-token.form-check .form-check-input:checked + .form-check-label .fas:first-of-type {
   opacity: 0;
 }
 .toggle-token.form-check

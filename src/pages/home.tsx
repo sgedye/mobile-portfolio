@@ -1,8 +1,22 @@
 import * as React from "react";
 import { Helmet } from "react-helmet";
-import { FaCircle, FaCheckCircle } from "react-icons/fa";
+// import { ToggleToken, RadioButtons } from "../components/Form";
+import { useForm } from "react-yup";
+
+const options = [
+  { value: 0, text: "Adult" },
+  { value: 1, text: "Child" }
+];
+
+const options2 = [
+  { value: 0, text: "Male" },
+  { value: 1, text: "Female" },
+  { value: 2, text: "Unknown" }
+];
 
 export const Home = () => {
+  const { field, values, getValue } = useForm();
+  console.log(values.test);
   return (
     <>
       <Helmet>
@@ -15,39 +29,22 @@ export const Home = () => {
         <br />
         This is the main content...
         <br />
-        <br />
-        <div className="container-fluid form-fieldset">
-          <div>
-            <div className="form-check toggle-token">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="membershipType"
-                id="individual"
-                value="individual"
-              />
-              <label className="form-check-label" htmlFor="individual">
-                <FaCircle className="fas" />
-                <FaCheckCircle className="fas" />
-                Individual
-              </label>
-            </div>
-            <div className="form-check toggle-token">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="membershipType"
-                id="family"
-                value="family"
-              />
-              <label className="form-check-label" htmlFor="family">
-                <FaCircle className="fas" />
-                <FaCheckCircle className="fas" />
-                Family
-              </label>
-            </div>
-          </div>
-        </div>
+        {/* <ToggleToken
+          id="memberType"
+          title="Member Type"
+          value={getValue("memberType") as number}
+          options={options}
+          {...field}
+        />
+        <RadioButtons
+          id="gender"
+          title="Gender"
+          value={getValue("gender") as number}
+          options={options2}
+          {...field}
+        /> */}
+
+        <pre>{JSON.stringify(values, null, 2)}</pre>
       </main>
     </>
   );
