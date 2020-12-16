@@ -9,8 +9,10 @@
 //   margin-left: -1.25rem;
 // }
 
-.form-check-input[disabled] ~ .form-check-label.form-check-label.form-check-label,
-.form-check-input:disabled ~ .form-check-label.form-check-label.form-check-label {
+.form-check-input[disabled]
+  ~ .form-check-label.form-check-label.form-check-label,
+.form-check-input:disabled
+  ~ .form-check-label.form-check-label.form-check-label {
   color: #6c757d;
   cursor: not-allowed;
 }
@@ -111,7 +113,10 @@
   left: 10px;
   color: #fff;
 }
-.toggle-token.form-check .form-check-input:checked + .form-check-label .fas:first-of-type {
+.toggle-token.form-check
+  .form-check-input:checked
+  + .form-check-label
+  .fas:first-of-type {
   opacity: 0;
 }
 .toggle-token.form-check
@@ -119,4 +124,8 @@
   + .form-check-label
   .fas:last-of-type {
   opacity: 1;
+}
+
+.toggle-token.form-check:focus-within .form-check-label {
+  filter: drop-shadow(0 0 2px rgb(0,123,255));
 }

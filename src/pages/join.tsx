@@ -221,12 +221,38 @@ export const Join = () => {
             >
               {isSubmitting ? "Submitting..." : "Submit"}
             </button>
+          </div>
+        </form>
             <button className="btn btn-outline">asdfk</button>
             <button className="btn btn-sm">asjsdh</button>
             <button className="btn btn-lg btn-outline">asdfh</button>
             <button className="btn btn-block">ajsdh</button>
-          </div>
-        </form>
+            <button className="btn btn-link btn-sm">ajsdh</button>
+            <button className="btn btn-link">ajsdh</button>
+            <button className="btn btn-link btn-lg">ajsdh</button>
+            <a href="http://">this is a real link</a>
+            <button className="btn btn-link">this is a fake link</button>
+            <button className="btn btn-link btn-disabled">this is a discable link</button>
+            <button className="btn btn-disabled">this is a dabelied link</button>
+            <button className="btn btn-link disabled">this is a fake dabelied link</button>
+            <a href="" className="disabled">this is a real dabelied link</a>
+
+            <button className="mb-2 btn btn-primary">this is a btn yo!</button>
+            <button className="mb-2 btn btn-secondary">this is a btn yo!</button>
+            <button className="mb-2 btn btn-success">this is a btn yo!</button>
+            <button className="mb-2 btn btn-info">this is a btn yo!</button>
+            <button className="mb-2 btn btn-warning">this is a btn yo!</button>
+            <button className="mb-2 btn btn-danger">this is a btn yo!</button>
+
+<hr/>
+            <button className="mb-2 btn btn-outline">this is a btn yo!</button>
+            <button className="mb-2 btn btn-outline-primary">this is a btn yo!</button>
+            <button className="mb-2 btn btn-outline-secondary">this is a btn yo!</button>
+            <button className="mb-2 btn btn-outline-success">this is a btn yo!</button>
+            <button className="mb-2 btn btn-outline-info">this is a btn yo!</button>
+            <button className="mb-2 btn btn-outline-warning">this is a btn yo!</button>
+            <button className="mb-2 btn btn-outline-danger">this is a btn yo!</button>
+
 
         <pre>{JSON.stringify({ values, touched, errors }, null, 2)}</pre>
       </main>

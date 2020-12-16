@@ -1,13 +1,3 @@
-$body-color: red;
-$background: green;
-$border: orange;
-
-$btn-border-width: 2px;
-$btn-active-box-shadow: 0 0 0 2px lightgreen;
-$btn-focus-box-shadow: 0 0 0 2px pink;
-$link-hover-color: purple;
-$link-hover-decoration: none;
-
 .btn {
   display: inline-block;
   font-family: $btn-font-family;
@@ -27,78 +17,75 @@ $link-hover-decoration: none;
   transition: all 300ms ease;
 
   &:hover {
+    color: white;
     background-color: darken($primary, 5%);
     text-decoration: none;
     box-shadow: none;
     transform: scaleX(1.025);
   }
 
-  &:focus,
-  &.focus {
-    outline: 0;
-    box-shadow: $btn-focus-box-shadow;
-  }
-
   // Disabled comes first so active can properly restyle
-  &.disabled,
-  &:disabled {
-    // opacity: $btn-disabled-opacity;
-    box-shadow: none;
-  }
+  // &.disabled,
+  // &:disabled {
+  //   // opacity: $btn-disabled-opacity;
+  //   box-shadow: none;
+  // }
 
-  &:not(:disabled):not(.disabled) {
-    cursor: pointer;
+  // &:not(:disabled):not(.disabled) {
+  //   cursor: pointer;
 
-    &:active,
-    &.active {
-      box-shadow: $btn-active-box-shadow;
+  //   &:active,
+  //   &.active {
+  //     box-shadow: $btn-active-box-shadow;
 
-      &:focus {
-        box-shadow: $btn-focus-box-shadow, $btn-active-box-shadow;
-      }
-    }
-  }
+  //     &:focus {
+  //       box-shadow: $btn-active-box-shadow;
+  //     }
+  //   }
+  // }
 }
 
 // Future-proof disabling of clicks on `<a>` elements
-a.btn.disabled,
-fieldset:disabled a.btn {
-  pointer-events: none;
-}
+// a.btn.disabled,
+// fieldset:disabled a.btn {
+//   pointer-events: none;
+// }
 
 //
 // Alternate buttons
-//
-// @each $color, $value in $theme-colors {
-//   .btn-#{$color} {
-//     @include button-variant($value, $value);
-//   }
-// }
+@each $color, $value in $theme-colors {
+  .btn-#{$color} {
+    @include button-variant(white, $value, transparent);
+  }
+}
 
-// @each $color, $value in $theme-colors {
-//   .btn-outline-#{$color} {
-//     @include button-outline-variant(
-//       $value,
-//       $value,
-//       transparent,
-//       darken($value, 10%)
-//     );
-//   }
-// }
+@each $color, $value in $theme-colors {
+  .btn-outline-#{$color} {
+    @include button-outline-variant(
+      $value,
+      white,
+      $value,
+      // darken($value, 10%)
+    );
+  }
+}
 
 //
-// Link buttons
-//
-
-// Make a button look and behave like a link
+// Link buttons -- Make a button look and behave like a link
 .btn-link {
   font-weight: $font-weight-normal;
+  font-size: $link-size;
+  line-height: $link-line-height;
   color: $link-color;
-  // text-decoration: $link-decoration;
+  background-color: transparent;
+  text-decoration: $link-decoration;
+  box-shadow: none;
 
   &:hover {
     color: $link-hover-color;
     text-decoration: $link-hover-decoration;
+    background-color: transparent;
+    transform: none;
   }
 
   &:focus,
@@ -108,11 +95,12 @@ fieldset:disabled a.btn {
 
   &:disabled,
   &.disabled {
-    // color: $btn-link-disabled-color;
+    color: $link-disabled-color;
+    opacity: $link-disabled-opacity;
+    text-decoration: underline;
     pointer-events: none;
   }
 
-  // No need for an active state here
 }
 
 // Button Sizes
@@ -159,10 +147,22 @@ input[type="button"] {
   background-color: white;
   color: $primary;
   border-color: $primary;
+  box-shadow: none;
 
   &:hover {
     background-color: white;
     color: $primary;
     border-color: darken($primary, 10%);
   }
+}
+
+//--------------------------------------//
+//
+/// LINKS
+a:disabled,
+a.disabled {
+  color: $link-disabled-color;
+  pointer-events: none;
+  text-decoration: underline;
+  opacity: $link-disabled-opacity;
 }

@@ -31,7 +31,7 @@ $grays: map-merge(
   $grays
 );
 
-$blue: #0755a3;
+$blue: #002fa7; // Klein Blue
 $indigo: #5848c4;
 $purple: #861d8a;
 $pink: #e83e8c;
@@ -39,7 +39,7 @@ $red: #eb4d4b;
 $orange: #f0932b;
 $yellow: #f9ca24;
 $green: #6ab04c;
-$teal: #20c997;
+$teal: #0082A6;
 $cyan: #22a6b3;
 
 $colors: ();
@@ -64,7 +64,7 @@ $colors: map-merge(
 );
 
 $primary: $blue;
-$secondary: $gray-600;
+$secondary: $teal;
 $success: $green;
 $info: $cyan;
 $warning: $orange;
@@ -178,6 +178,13 @@ $lead-font-weight: $font-weight-normal;
 //
 // Links
 $link-color: #007bff;
+$link-size: 1rem;
+$link-line-height: 1.5rem;
+$link-disabled-color: darken($link-color, 30%);
+$link-hover-color: darken($link-color, 20%);
+$link-decoration: none;
+$link-hover-decoration: underline;
+$link-disabled-opacity: 0.6;
 
 //
 // Buttons
@@ -186,22 +193,22 @@ $btn-padding-x: 1.875rem;
 $btn-font-family: $font-family-serif;
 $btn-font-size: $font-size-base * 1.125;
 $btn-font-weight: $font-weight-bold;
+$btn-line-height: 1.5;
+$btn-border-width: 2px;
+$btn-border-radius: 0.8rem;
+$btn-active-box-shadow: 0 0 5px 0 lighten($primary, 20%);
 
 $btn-padding-y-sm: 0.25rem;
 $btn-padding-x-sm: 1.25rem;
 $btn-font-size-sm: $font-size-base;
+$btn-line-height-sm: 1.25;
+$btn-border-radius-sm: 0.4rem;
 
 $btn-padding-y-lg: 0.8125rem;
 $btn-padding-x-lg: 2.5rem;
 $btn-font-size-lg: $font-size-base * 1.25;
-
-$btn-border-radius: 0.8rem;
-$btn-border-radius-lg: 1rem;
-$btn-border-radius-sm: 0.4rem;
-
-$btn-line-height: 1.5;
 $btn-line-height-lg: 2;
-$btn-line-height-sm: 1.25;
+$btn-border-radius-lg: 1rem;
 
 //
 // Navbar
